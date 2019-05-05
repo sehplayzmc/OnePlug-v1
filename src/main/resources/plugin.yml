@@ -1,0 +1,7 @@
+name: OnePlug-v1
+version: ${project.version}
+main: me.seth.oneplug.Me.seth.oneplug
+api-version: 1.13
+softdepend: [Vault]
+authors: [seth]
+description: A OnePlugin
