@@ -1,7 +1,7 @@
 package me.seth.oneplug.utils;
 
 import me.seth.oneplug.main.Oneplug;
-import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
@@ -9,11 +9,9 @@ import java.util.UUID;
 
 public class pManager {
     public HashMap<UUID, Integer> time = new HashMap<UUID, Integer>();
-
     private Oneplug plugin;
-    public void mConsole(Oneplug pl, String s) {
-        Bukkit.getServer().getConsoleSender().sendMessage(s);
-        plugin = pl;
+    public String ChatMessage(String s) {
+        return ChatColor.translateAlternateColorCodes('&', s);
     }
 
     public void onRunnable() {

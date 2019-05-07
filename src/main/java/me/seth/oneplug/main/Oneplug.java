@@ -1,12 +1,10 @@
 package me.seth.oneplug.main;
 
+import me.seth.oneplug.commands.CommandFly;
 import me.seth.oneplug.commands.CommandXp;
 import me.seth.oneplug.commands.Commandheal;
-import me.seth.oneplug.commands.Commandversion;
 import me.seth.oneplug.events.BanWord;
-import me.seth.oneplug.utils.Version;
 import me.seth.oneplug.utils.pManager;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Oneplug extends JavaPlugin {
@@ -17,15 +15,16 @@ public final class Oneplug extends JavaPlugin {
     @Override
     public void onEnable() {
         onLoad();
+        this.getServer().getConsoleSender().sendMessage(pM.ChatMessage("&a[OnePlug] Enabled!"));
         registerCommands();
         registerEvents();
-//        pM.mConsole(this, "OnePlug is Enabled, Version: " + Version.Snapshot);
+        saveDefaultConfig();
     }
 
     private void registerCommands() {
-        this.getCommand("heal").setExecutor(new Commandheal());
-        this.getCommand("xp").setExecutor(new CommandXp());
-
+        new Commandheal(this);
+        new CommandXp(this);
+        new CommandFly(this);
     }
 
 
@@ -36,18 +35,11 @@ public final class Oneplug extends JavaPlugin {
 
     @Override
     public void onDisable() {
-/*
-        pM.mConsole(this, ChatColor.RED + "OnePlug: is Disabled!");
-*/
-
     }
     public void onLoad() {
         this.getConfig().options().copyDefaults(true);
-        this.saveConfig();
+        pM = new pManager();
         pM.onRunnable();
-    }
-    public Oneplug getPlugin() {
-        return plugin;
     }
 
 }

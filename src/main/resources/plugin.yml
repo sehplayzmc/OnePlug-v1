@@ -1,7 +1,14 @@
-name: OnePlug-v1
+name: OnePlug
 version: ${project.version}
-main: me.seth.oneplug.Me.seth.oneplug
+main: me.seth.oneplug.main.Oneplug
 api-version: 1.13
 softdepend: [Vault]
 authors: [seth]
 description: A OnePlugin
+commands:
+  heal:
+    description: heal's the player
+  xp:
+    description: gives the player xp with an amount
+  fly:
+    description: allows the player to fly
